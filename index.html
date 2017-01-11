@@ -3,13 +3,16 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Backbone.js • TodoMVC</title>
-		<link rel="stylesheet" href="bower_components/todomvc-common/base.css">
+		<!--<link rel="stylesheet" href="bower_components/todomvc-common/base.css">-->
+		<link rel="stylesheet" href="css/base.css">
 	</head>
 	<body>
 		<section id="todoapp">
 			<header id="header">
 				<h1>todos</h1>
 				<input id="new-todo" placeholder="What needs to be done?" autofocus>
+				<label for="new-deadline" id="new-deadline-label">By When</label>
+				<input id="new-deadline" type="date">
 			</header>
 			<section id="main">
 				<input id="toggle-all" type="checkbox">

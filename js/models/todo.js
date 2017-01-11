@@ -14,7 +14,8 @@ var app = app || {};
 		defaults: {
 			title: '',
 			completed: false,
-			priority: false
+			priority: false,
+			deadline: ''
 		},
 
 		// toggle priority
