@@ -19,7 +19,8 @@ var app = app || {};
 
 		// Delegated events for creating new items, and clearing completed ones.
 		events: {
-			'keypress #new-todo': 'createOnEnter',
+			// 'keypress #new-todo': 'createOnEnter',
+			'submit'	: 'submit',
 			'click #clear-completed': 'clearCompleted',
 			'click #toggle-all': 'toggleAllComplete'
 		},
@@ -30,6 +31,8 @@ var app = app || {};
 		initialize: function () {
 			this.allCheckbox = this.$('#toggle-all')[0];
 			this.$input = this.$('#new-todo');
+			// deadline date
+			this.$deadline = this.$('#new-deadline');
 			this.$footer = this.$('#footer');
 			this.$main = this.$('#main');
 			this.$list = $('#todo-list');
@@ -99,7 +102,8 @@ var app = app || {};
 			return {
 				title: this.$input.val().trim(),
 				order: app.todos.nextOrder(),
-				completed: false
+				completed: false,
+				deadline: this.$deadline.val()
 			};
 		},
 
@@ -111,6 +115,14 @@ var app = app || {};
 				this.$input.val('');
 			}
 		},
+
+		// submit task via submit button
+		submit:	function (e) {
+			e.preventDefault();
+			console.log("submit baby");
+            app.todos.create(this.newAttributes());
+            this.$input.val('');
+        },
 
 		// Clear all completed todo items, destroying their models.
 		clearCompleted: function () {
